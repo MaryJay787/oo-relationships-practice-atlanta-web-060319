@@ -34,6 +34,7 @@ class Guest
 
     def self.pro_traveller
         ## returns an array of all guest who have made over 1 trip
+      guests.find_all {|guest| a.count(guest.trips) > 1}
     end
 
     def self.find_all_by_name(name)
