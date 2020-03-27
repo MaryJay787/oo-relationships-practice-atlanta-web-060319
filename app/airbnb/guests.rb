@@ -13,23 +13,23 @@ class Guest
         @@guests
     end
 
-    def guests
+    def all_trips
         Trip.all.select {|tri| tri.guest == self }
     end
 
     def listings
         ## returns an array of all listings a guest has stayed at
-        guests.map {|gue| gue.listing}
+        all_trips.map {|ts| ts.listing}
     end
 
     def trips 
         ## returns an array of all trips a guest has taken
-        guests.map {|gue| gue.trips}    
+        all_trips.map {|ts| ts.trips}    
     end
 
     def trip_count
         ## returns the number of trips a guest has taken
-        trips.map {|tri| tri}.count
+        all_trips.map {|tri| tri}.count
     end
 
     def self.pro_traveller
@@ -39,6 +39,7 @@ class Guest
 
     def self.find_all_by_name(name)
         ## takes an argument of a name and returns all guest with that name
+        @@guests.find {|gs| gs.name == name }
     end
 
 end
