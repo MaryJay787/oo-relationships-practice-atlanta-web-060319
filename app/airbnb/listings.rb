@@ -1,9 +1,9 @@
 class Listing
-    attr_reader :cityname
+    attr_reader :city
     @@listings = []
 
-    def initilaize(cityname)
-        @cityname = cityname
+    def initilaize(city)
+        @city = city
         @@listings << self 
     end
     
@@ -11,18 +11,14 @@ class Listing
         @@listings
     end
 
-    def listing
-        Trip.all.select {|trip| trip.listing == self}
-    end
-
     def guests
         ## returns an array of all the guests who have stayed at a listing
-        listing.map {|lis| lis.guest}
+        trips.map {|tps| tps.guest}
     end
 
     def trips
         ## returns an array of all the trips at the listing
-        listing.map {|lis| lis.trip}
+        Trip.all.select {|trip| trip.listing == self}
     end
 
     def trip_count
@@ -31,9 +27,7 @@ class Listing
     end
 
     def self.find_all_by_city(city)
-        @@listings.all.select {|list| list.cityname == self }
+        @@listings.find {|lists| lists.city == city}
     end
-    
-    def
-    end
+
 end
