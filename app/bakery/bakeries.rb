@@ -29,6 +29,7 @@ class Bakery
 
     def shopping_list
         ##should return a string of names for the ingredients for the bakery. 
+        ingredients.map {|ingred| ingred.name.to_s }.join(",")
     end
 
 end
