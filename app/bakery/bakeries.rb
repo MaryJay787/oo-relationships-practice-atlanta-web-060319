@@ -13,14 +13,18 @@ class Bakery
 
     def ingredients
         ##should return an array of ingrediances for that desert.
+        Ingrediant.all.select {|ingred| ingred.bakery == self}
     end
 
     def deserts
         ##should return an array of desserts that baker makes
+        ingredients.map {|ingred| ingred.dessert}
     end
 
     def average_calories
         ##should return a number totaling the average number of calories for the deserts sold at that bakery.
+       cals = ingredients.map {|ingred| ingred.calorie_count}
+       cals.inject {|sum, el| sum + el}.to_f / cals.size
     end
 
     def shopping_list
