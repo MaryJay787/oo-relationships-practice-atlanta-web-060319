@@ -15,6 +15,7 @@ class Dessert
 
     def ingredients
         ##should return an array of ingredients for that dessert
+        Ingredient.all.select {|ingre| ingre.dessert == self}
     end
 
     def calories 
