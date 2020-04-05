@@ -20,6 +20,7 @@ class Dessert
 
     def calories 
         ##a number totaling all the calories for all the ingredients included in that dessert.
+        ingredients.map {|ingre| ingre.dessert.calorie_count}
     end
 
 end
